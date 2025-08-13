@@ -1,0 +1,124 @@
+{% extends "base.html" %}
+
+{% block title %}Contact Femina Carolin | ML Developer{% endblock %}
+
+{% block content %}
+<section class="contact-section">
+    <div class="container">
+        <!-- Header Section -->
+        <div class="contact-header">
+            <h1 class="section-title">Get In <span>Touch</span></h1>
+            <p class="section-subtitle">
+                Have a project in mind or want to discuss opportunities? I'd love to hear from you!
+            </p>
+            <div class="availability-badge">
+                <i class="fas fa-circle"></i> Currently available for full-time roles
+            </div>
+        </div>
+
+        <!-- Contact Grid -->
+        <div class="contact-grid">
+            <!-- Contact Methods -->
+            <div class="contact-methods">
+                <div class="contact-card">
+                    <div class="contact-icon email">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="contact-info">
+                        <h3>Email Me</h3>
+                        <a href="mailto:feminacarolin2002@gmail.com">feminacarolin2002@gmail.com</a>
+                        <div class="contact-meta">
+                            <i class="fas fa-reply"></i> Typically responds within 24 hours
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon phone">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <div class="contact-info">
+                        <h3>Call/WhatsApp</h3>
+                        <a href="tel:+918438805328">+91 8438805328</a>
+                        <div class="contact-meta">
+                            <i class="fas fa-clock"></i> Mon-Fri, 9AM-6PM IST
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon linkedin">
+                        <i class="fab fa-linkedin-in"></i>
+                    </div>
+                    <div class="contact-info">
+                        <h3>LinkedIn</h3>
+                        <a href="https://linkedin.com/in/feminacarolin14" target="_blank">in/feminacarolin14</a>
+                        <div class="contact-meta">
+                            <i class="fas fa-user-plus"></i> Connect with me
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="contact-form">
+                <div class="form-header">
+                    <h2><i class="fas fa-paper-plane"></i> Send Me a Message</h2>
+                    <p>Have a specific question? Fill out this form and I'll get back to you soon.</p>
+                </div>
+
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                        {% for category, message in messages %}
+                            <div class="alert alert-{{ category }}">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+
+                <form action="{{ url_for('submit_contact') }}" method="POST">
+                    <div class="form-group">
+                        <label for="name">Your Name <span>*</span></label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-user"></i>
+                            <input type="text" id="name" name="name" placeholder="John Doe" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Your Email <span>*</span></label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-envelope"></i>
+                            <input type="email" id="email" name="email" placeholder="john@example.com" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="opportunity">Regarding <span>*</span></label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-briefcase"></i>
+                            <select id="opportunity" name="opportunity" required>
+                                <option value="" disabled selected>Select an option</option>
+                                <option value="full-time">Full-time Position</option>
+                                <option value="internship">Internship Opportunity</option>
+                                <option value="project">Project Collaboration</option>
+                                <option value="other">Other Inquiry</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Your Message <span>*</span></label>
+                        <textarea id="message" name="message" rows="5" placeholder="I'd like to discuss..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-paper-plane"></i> Send Message
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

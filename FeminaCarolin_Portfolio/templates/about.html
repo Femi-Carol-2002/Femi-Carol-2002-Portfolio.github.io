@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}About Me{% endblock %}
+
+{% block content %}
+<section class="about-section">
+    <div class="container">
+        <h2 class="section-title">About <span>Me</span></h2>
+        <div class="about-content">
+            <div class="about-image">
+                <img src="{{ url_for('static', filename='images/profile.jpg') }}" alt="Femina Carolin S">
+            </div>
+            <div class="about-text">
+                <p>Recent postgraduate in Information Technology with a B.Sc. in Computer Science, equipped with strong analytical and programming skills.</p>
+                <p>Proficient in Python, SQL, Excel, Power BI, and familiar with machine learning and deep learning concepts.</p>
+                <div class="personal-info">
+                    <div class="info-item">
+                        <span>Name:</span>
+                        <p>Femina Carolin S</p>
+                    </div>
+                    <div class="info-item">
+                        <span>Email:</span>
+                        <p>feminacarolin2002@gmail.com</p>
+                    </div>
+                    <div class="info-item">
+                        <span>Phone:</span>
+                        <p>+91 8438805328</p>
+                    </div>
+                    <div class="info-item">
+                        <span>Location:</span>
+                        <p>Chennai, Tamil Nadu, India</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

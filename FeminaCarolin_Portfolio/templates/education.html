@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+
+{% block title %}Education{% endblock %}
+
+{% block content %}
+<section class="education-section">
+    <div class="container">
+        <h2 class="section-title">My <span>Education</span></h2>
+        
+        <div class="education-timeline">
+            <!-- MSc Section -->
+            <div class="education-item highlight-degree">
+                <div class="education-header">
+                    <div class="college-logo">
+                        <img src="{{ url_for('static', filename='images/stella-maris-logo.png') }}" alt="Stella Maris College">
+                    </div>
+                    <div class="education-details">
+                        <h3>Master of Science in Information Technology</h3>
+                        <p class="college-name">Stella Maris College, Chennai</p>
+                        <p class="duration">July 2023 - May 2025</p>
+                        <p class="grade"><i class="fas fa-trophy"></i> CGPA: 8.0/10</p>
+                    </div>
+                </div>
+                <div class="education-content">
+                    <ul>
+                        <li>Specialized in Data Analytics and Machine Learning</li>
+                        <li>Thesis: "Advanced Techniques in Medical Image Analysis"</li>
+                        <li>Coursework: Deep Learning, Big Data Analytics, Cloud Computing</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- BSc Section -->
+            <div class="education-item">
+                <div class="education-header">
+                    <div class="college-logo">
+                        <img src="{{ url_for('static', filename='images/jnn-logo.png') }}" alt="JNN College">
+                    </div>
+                    <div class="education-details">
+                        <h3>Bachelor of Science in Computer Science</h3>
+                        <p class="college-name">JNN Arts And Science Women's College, Chennai</p>
+                        <p class="duration">July 2020 - May 2023</p>
+                        <p class="grade distinction"><i class="fas fa-award"></i> First Class with Distinction</p>
+                    </div>
+                </div>
+                <div class="education-content">
+                    <ul>
+                        <li>Core Subjects: Data Structures, Algorithms, Database Systems</li>
+                        <li>Mathematics Minor</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Certifications Section -->
+        <div class="certifications-section">
+            <h3 class="certifications-title"><i class="fas fa-certificate"></i> Certifications</h3>
+            
+            <div class="certifications-grid">
+                <div class="certification-card">
+                    <div class="certification-header">
+                        <i class="fab fa-microsoft"></i>
+                        <h4>Data Analytics Using Power BI</h4>
+                    </div>
+                    <p class="institute">Sysaan's Career Analytics Technology Solutions Pvt. Ltd.</p>
+                    <p class="date">Aug 2024 - Sep 2024</p>
+                    <ul>
+                        <li>Mastered data loading, transformation, and dashboard creation</li>
+                        <li>Developed 5+ interactive business dashboards</li>
+                    </ul>
+                </div>
+                
+                <div class="certification-card">
+                    <div class="certification-header">
+                        <i class="fab fa-aws"></i>
+                        <h4>AWS Academy Cloud Foundations</h4>
+                    </div>
+                    <p class="date">Completed 2024</p>
+                    <ul>
+                        <li>Gained expertise in AWS core services and cloud architecture</li>
+                        <li>Hands-on experience with EC2, S3, and Lambda</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

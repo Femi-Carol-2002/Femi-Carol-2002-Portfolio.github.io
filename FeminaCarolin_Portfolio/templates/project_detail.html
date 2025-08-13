@@ -1,0 +1,212 @@
+{% extends "base.html" %}
+
+{% block title %}{{ project.title }} Case Study{% endblock %}
+
+{% block content %}
+<section class="project-detail-section">
+    <div class="container">
+        <!-- Back Navigation -->
+        <div class="project-navigation animate-fade-in">
+            <a href="{{ url_for('show_projects') }}" class="btn-back-to-projects">
+                <i class="fas fa-arrow-left"></i> View All Projects
+            </a>
+        </div>
+        
+        <div class="project-detail-container">
+            <!-- Project Header -->
+            <div class="project-header animate-slide-up">
+                <div class="project-category-badge">
+                    {{ project.category }}
+                </div>
+                <h1>{{ project.title }}</h1>
+                <div class="project-meta-detail">
+                    <span><i class="fas fa-calendar"></i> {{ project.date }}</span>
+                    <span><i class="fas fa-hourglass-half"></i> {{ project.duration }}</span>
+                    {% if project.team_size %}
+                    <span><i class="fas fa-users"></i> Team: {{ project.team_size }}</span>
+                    {% endif %}
+                </div>
+            </div>
+            
+            <!-- Project Content -->
+            <div class="project-content-detail">
+                <!-- Overview Section -->
+                <div class="project-overview animate-fade-in" style="--delay: 0.3s">
+                    <h2><i class="fas fa-clipboard-list"></i> Project Overview</h2>
+                    <p>{{ project.description }}</p>
+                    
+                    {% if project.problem_statement %}
+                    <div class="problem-statement">
+                        <h3><i class="fas fa-question-circle"></i> Problem Statement</h3>
+                        <p>{{ project.problem_statement }}</p>
+                    </div>
+                    {% endif %}
+                </div>
+                
+                <!-- Key Metrics -->
+                {% if project.metrics %}
+                <div class="metrics-section animate-fade-in" style="--delay: 0.35s">
+                    <h3><i class="fas fa-chart-line"></i> Key Metrics</h3>
+                    <div class="metrics-grid">
+                        {% for metric in project.metrics %}
+                        <div class="metric-card">
+                            <div class="metric-value">{{ metric.value }}</div>
+                            <div class="metric-label">{{ metric.label }}</div>
+                            {% if metric.tooltip %}
+                            <div class="metric-tooltip">{{ metric.tooltip }}</div>
+                            {% endif %}
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
+                
+                <!-- Tech Stack Section -->
+                <div class="tech-stack-section animate-fade-in" style="--delay: 0.4s">
+                    <h3><i class="fas fa-code"></i> Technology Stack</h3>
+                    <div class="tech-tags">
+                        {% for tech in project.technologies %}
+                        <span>
+                            {% if tech.lower() in ['python', 'javascript', 'html', 'css', 'react', 'node.js'] %}
+                                <i class="fab fa-{{ tech.lower() }}"></i>
+                            {% elif tech.lower() in ['flask', 'tensorflow'] %}
+                                <i class="fas fa-{{ 'fire' if tech.lower() == 'flask' else 'brain' }}"></i>
+                            {% elif tech.lower() in ['efficientnet', 'yolo'] %}
+                                <i class="fas fa-robot"></i>
+                            {% elif tech.lower() in ['xgboost', 'random forest'] %}
+                                <i class="fas fa-project-diagram"></i>
+                            {% else %}
+                                <i class="fas fa-cog"></i>
+                            {% endif %}
+                            {{ tech }}
+                        </span>
+                        {% endfor %}
+                    </div>
+                </div>
+                
+                <!-- Solution Approach -->
+                {% if project.solution %}
+                <div class="solution-section animate-fade-in" style="--delay: 0.45s">
+                    <h3><i class="fas fa-lightbulb"></i> Solution Approach</h3>
+                    <p>{{ project.solution }}</p>
+                    
+                    {% if project.methodology %}
+                    <div class="methodology">
+                        <h4>Methodology:</h4>
+                        <ul>
+                            {% for step in project.methodology %}
+                            <li>{{ step }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    {% endif %}
+                </div>
+                {% endif %}
+                
+                <!-- Challenges & Solutions -->
+                {% if project.challenges %}
+                <div class="challenges-section animate-fade-in" style="--delay: 0.5s">
+                    <h3><i class="fas fa-exclamation-triangle"></i> Challenges & Solutions</h3>
+                    <div class="challenges-grid">
+                        {% for challenge in project.challenges %}
+                        <div class="challenge-card">
+                            <div class="challenge">
+                                <h4>Challenge:</h4>
+                                <p>{{ challenge.challenge }}</p>
+                            </div>
+                            <div class="solution">
+                                <h4>Solution:</h4>
+                                <p>{{ challenge.solution }}</p>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
+                
+                {% if project.visuals %}
+                <div class="visuals-section animate-fade-in" style="--delay: 0.55s">
+                    <h3><i class="fas fa-images"></i> Project Visuals</h3>
+                    <div class="visuals-gallery">
+                        {% for visual in project.visuals %}
+                        <div class="visual-card">
+                            <img src="{{ url_for('static', filename=visual.image) }}" 
+                                alt="{{ visual.caption }}" 
+                                loading="lazy">
+                            <div class="visual-caption">{{ visual.caption }}</div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
+                
+                <!-- Key Achievements -->
+                <div class="project-outcomes animate-fade-in" style="--delay: 0.6s">
+                    <h2><i class="fas fa-trophy"></i> Key Achievements</h2>
+                    <ul class="outcomes-list">
+                        {% for outcome in project.outcomes %}
+                        <li>{{ outcome }}</li>
+                        {% endfor %}
+                    </ul>
+                    
+                    {% if project.impact %}
+                    <div class="impact-section">
+                        <h3>Impact:</h3>
+                        <p>{{ project.impact }}</p>
+                    </div>
+                    {% endif %}
+                </div>
+                
+                <!-- Lessons Learned -->
+                {% if project.lessons %}
+                <div class="lessons-section animate-fade-in" style="--delay: 0.65s">
+                    <h3><i class="fas fa-graduation-cap"></i> Lessons Learned</h3>
+                    <ul>
+                        {% for lesson in project.lessons %}
+                        <li>{{ lesson }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
+                
+                <!-- Future Improvements -->
+                {% if project.future_improvements %}
+                <div class="future-section animate-fade-in" style="--delay: 0.7s">
+                    <h3><i class="fas fa-rocket"></i> Future Improvements</h3>
+                    <ul>
+                        {% for improvement in project.future_improvements %}
+                        <li>{{ improvement }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
+                
+                <!-- Action Buttons -->
+                {% if project.github_link != '#' or project.live_link != '#' %}
+                <div class="project-actions animate-fade-in" style="--delay: 0.75s">
+                    {% if project.github_link != '#' %}
+                    <a href="{{ project.github_link }}" class="btn-project-action btn-github" target="_blank" rel="noopener">
+                        <i class="fab fa-github"></i> View Code
+                    </a>
+                    {% endif %}
+                    
+                    {% if project.live_link != '#' %}
+                    <a href="{{ project.live_link }}" class="btn-project-action btn-demo" target="_blank" rel="noopener">
+                        <i class="fas fa-external-link-alt"></i> Live Demo
+                    </a>
+                    {% endif %}
+                    
+                    {% if project.report_link != '#' %}
+                    <a href="{{ project.report_link }}" class="btn-project-action btn-report" target="_blank" rel="noopener">
+                        <i class="fas fa-file-pdf"></i> View Report
+                    </a>
+                    {% endif %}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+{% endblock %}

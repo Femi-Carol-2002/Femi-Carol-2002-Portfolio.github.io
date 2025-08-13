@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <div class="container">
+        <div class="hero-content">
+            <h1 class="animate-pop-in">Femina Carolin S</h1>
+            <p class="subtitle animate-pop-in">Data Analyst | AI Enthusiast</p>
+            <p class="hero-text animate-pop-in">Transforming data into actionable insights with cutting-edge technology</p>
+            <div class="hero-buttons animate-pop-in">
+                <a href="/projects" class="btn btn-primary">View My Work</a>
+                <a href="/contact" class="btn btn-secondary">Contact Me</a>
+            </div>
+        </div>
+        <div class="hero-image animate-float">
+            <img src="{{ url_for('static', filename='images/profile.jpg') }}" alt="Femina Carolin S">
+        </div>
+    </div>
+</section>
+{% endblock %}
